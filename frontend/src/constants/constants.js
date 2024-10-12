@@ -1,1 +1,2 @@
-export const baseURL = 'http://52.195.171.228:8080';
+// Constants for quick configurations at the time of hosting!
+export const baseURL = 'https://www.200902.xyz/proxy-api'  // Proxy For: 'http://52.195.171.228:8080 (to avoid mixed-content https/http errors)'

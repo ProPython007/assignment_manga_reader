@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+
+// Template for 404:
 const NotFound = () => {
     return ( 
         <div className="not-found">

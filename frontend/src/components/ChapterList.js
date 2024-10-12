@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ContentPage from "./ContentPage"
 
 
+// This component renders the chapter buttons and then pass the selected chapter as a prop to ContentPage component:
 const ChapterList = (props) => {    
     const book = props.book;
     const [currentChapter, setCurrentChapter] = useState(book.chapter_ids[0]);
@@ -12,6 +13,7 @@ const ChapterList = (props) => {
         setStartingPage(0);
     }, [book]);
 
+    // Func for checking if selected:
     function isChapterSelected(id) {
         if (currentChapter === id){
             return true;
@@ -19,6 +21,7 @@ const ChapterList = (props) => {
         return false;
     }
 
+    // Func for handling chapter previous switch:
     function prevChapter() {
         let currentChapterIdx = book.chapter_ids.findIndex((id) => id === currentChapter);
         currentChapterIdx = (currentChapterIdx - 1);
@@ -29,6 +32,7 @@ const ChapterList = (props) => {
         setStartingPage(-1);
     }
 
+    // Func for handling chapter next switch:
     function nextChapter() {
         let currentChapterIdx = book.chapter_ids.findIndex((id) => id === currentChapter);
         currentChapterIdx = (currentChapterIdx + 1) % book.chapter_ids.length;

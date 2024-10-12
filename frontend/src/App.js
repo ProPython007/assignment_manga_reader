@@ -3,6 +3,7 @@ import NotFound from './components/NotFound'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
+// Main base for mounting the components:
 function App() {
   return (
     <Router>

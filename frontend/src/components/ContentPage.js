@@ -3,6 +3,7 @@ import { baseURL } from "../constants/constants";
 import useFetch from "../utils/useFetch";
 
 
+// This component renders the page and keep track of pages and also handles change in prev/next chapters at edge pages through the functions accuired from parent component:
 const ContentPage = (props) => {
     const chapterId = props.chapterId;
     const startingPage = props.startingPage;
@@ -12,6 +13,7 @@ const ContentPage = (props) => {
     const { data: content, isPending, error } = useFetch(`${baseURL}/chapters/${chapterId}/`);
     const [currentPage, setCurrentPage] = useState(0);
 
+    // Setting up dependency for asynchronous fetch:
     useEffect(() => {
         if (startingPage === -1){
             setCurrentPage(content.pages.length - 1);
@@ -21,6 +23,7 @@ const ContentPage = (props) => {
         }
     }, [content, startingPage]);
 
+    // Func for handling page previous switch:
     function prevPage() {
         let tempCurrentPage = currentPage - 1;
         if (tempCurrentPage < 0) {
@@ -30,6 +33,7 @@ const ContentPage = (props) => {
         }
     }
 
+    // Func for handling page next switch:
     function nextPage() {
         let tempCurrentPage = currentPage + 1;
         if (tempCurrentPage > (content.pages.length - 1)) {
@@ -39,6 +43,7 @@ const ContentPage = (props) => {
         }
     }
 
+    // Func for handling overlays for pages next/prev switch:
     const handleImageClick = (event) => {
         const imgWidth = event.target.clientWidth;
         const clickX = event.nativeEvent.offsetX;

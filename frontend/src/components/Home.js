@@ -4,16 +4,19 @@ import useFetch from "../utils/useFetch";
 import ChapterList from "./ChapterList"
 
 
+// Home component which renders the books buttons and pass the selected book as prop to ChapterList component:
 const Home = () => {
     const {data: books, isPending, error} = useFetch(`${baseURL}/books/`);
     const [currentBook, setCurrentBook] = useState(null);
 
+    // Setting up dependency for asynchronous fetch:
     useEffect(() => {
         if (books && books.length > 0) {
             setCurrentBook(books[0]);
         }
     }, [books]);
 
+    // Func for checking if selected:
     function isBookSelected(id) {
         if ((currentBook) && (currentBook.id === id)){
             return true;

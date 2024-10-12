@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 
 
+// Utility function to fetch data through get request:
+// Expects URL
+// Returns Data, Loader and Error
+// Equipped with AbortController to abort unwanted pending/old requests!
 const useFetch = (url) => {
     const [data, setData] = useState(null);
     const [isPending, setIsPending] = useState(true);
