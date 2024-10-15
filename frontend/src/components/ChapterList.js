@@ -49,7 +49,8 @@ const ChapterList = (props) => {
                             isChapterSelected(chapter) ? "chapter currentChapter" : "chapter"
                         }
                         onClick={() => {
-                            setCurrentChapter(chapter)
+                            setCurrentChapter(chapter);
+                            setStartingPage(0);
                         }}
                         key={i}>
                             {chapter}
